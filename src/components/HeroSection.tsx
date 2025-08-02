@@ -50,7 +50,7 @@ const HeroSection = () => {
                 className="bg-gradient-to-r from-primary to-chart-1 hover:from-primary/90 hover:to-chart-1/90 text-primary-foreground px-8 py-6 text-lg group"
                 onClick={() => scrollToSection("kontakt")}
               >
-                Umów bezpłatną konsultację
+                Umów konsultację
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
 
@@ -61,7 +61,7 @@ const HeroSection = () => {
                 onClick={() => scrollToSection("uslugi")}
               >
                 <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-                Zobacz nasze usługi
+                Zobacz usługi
               </Button>
             </div>
           </div>

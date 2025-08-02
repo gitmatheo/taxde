@@ -32,6 +32,8 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 - `src/hooks/useAnimation.ts` - New unified animation hook
 - `docs/color-migration-guide.md` - Comprehensive color mapping guide for OKLCH theme migration
 - `docs/color-testing-checklist.md` - Comprehensive testing guide for light/dark theme consistency
+- `docs/oklch-verification-guide.md` - Technical guide for OKLCH color space verification
+- `docs/oklch-verification-script.js` - Automated browser console script for OKLCH testing
 
 ### Notes
 
@@ -49,7 +51,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
   - [x] 1.3 Update floating card colors in HeroSection.tsx to use bg-card and text-card-foreground instead of bg-white/bg-gray-800
   - [x] 1.4 Replace hardcoded red-\* colors in ui/toast.tsx with theme destructive colors
   - [x] 1.5 Audit all remaining components for hardcoded colors and replace with theme equivalents
-  - [ ] 1.6 Test color consistency across light and dark themes
+  - [x] 1.6 Test color consistency across light and dark themes
   - [ ] 1.7 Verify all colors work properly with OKLCH color space
 
 - [ ] 2.0 Component Extraction & Reusability
