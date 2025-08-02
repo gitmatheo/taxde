@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 import SectionHeader from "@/components/common/SectionHeader";
+import AnimatedSection from "@/components/common/AnimatedSection";
 
 interface BlogPost {
   id: string;
@@ -20,11 +20,6 @@ interface BlogListProps {
 }
 
 const BlogList = ({ onPostClick }: BlogListProps) => {
-  const { elementRef: postsRef, isVisible: postsVisible } =
-    useStaggeredAnimation(6, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    });
 
   const blogPosts: BlogPost[] = [
     {
@@ -135,8 +130,8 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
         </div>
 
         {/* Blog Posts Grid */}
-        <div
-          ref={postsRef}
+        <AnimatedSection
+          staggerCount={6}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {blogPosts.map((post, index) => (
@@ -194,7 +189,7 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </AnimatedSection>
       </div>
     </div>
   );

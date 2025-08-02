@@ -5,23 +5,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from "lucide-react";
-import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 import SectionHeader from "@/components/common/SectionHeader";
+import AnimatedSection from "@/components/common/AnimatedSection";
 
 const ContactSection = () => {
   const { toast } = useToast();
 
-  const { elementRef: contentRef, isVisible: contentVisible } =
-    useStaggeredAnimation(2, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    });
 
-  const { elementRef: contactInfoRef, isVisible: contactInfoVisible } =
-    useStaggeredAnimation(4, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -100,8 +90,8 @@ const ContactSection = () => {
           description="Umów bezpłatną konsultację i dowiedz się, jak możemy pomóc Twojemu biznesowi"
         />
 
-        <div
-          ref={contentRef}
+        <AnimatedSection
+          staggerCount={2}
           className="grid lg:grid-cols-2 gap-12 items-start"
         >
           {/* Contact Form */}
@@ -230,11 +220,7 @@ const ContactSection = () => {
 
           {/* Contact Information */}
           <div className="stagger-item">
-            <div
-              className={`mb-8 scroll-fade-right ${
-                contentVisible ? "visible" : ""
-              }`}
-            >
+                         <div className="mb-8 scroll-fade-right">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Skontaktuj się z nami
               </h3>
@@ -244,7 +230,7 @@ const ContactSection = () => {
               </p>
             </div>
 
-            <div ref={contactInfoRef} className="space-y-4 mb-8">
+                         <AnimatedSection staggerCount={4} className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
                 <Card
                   key={index}
@@ -269,10 +255,10 @@ const ContactSection = () => {
                     </a>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
+                             ))}
+             </AnimatedSection>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

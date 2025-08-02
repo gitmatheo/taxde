@@ -6,14 +6,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 import SectionHeader from "@/components/common/SectionHeader";
+import AnimatedSection from "@/components/common/AnimatedSection";
 
 const ServicesSection = () => {
-  const { elementRef } = useStaggeredAnimation(3, {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  });
 
   const services = [
     {
@@ -65,8 +61,8 @@ const ServicesSection = () => {
           description="Załatwimy wszystkie formalności, poprowadzimy księgowość i zajmiemy się kontaktem z urzędami. Ty skupiasz się na biznesie — my zajmujemy się resztą."
         />
 
-        <div
-          ref={elementRef as React.RefObject<HTMLDivElement>}
+        <AnimatedSection
+          staggerCount={3}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
@@ -104,7 +100,7 @@ const ServicesSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

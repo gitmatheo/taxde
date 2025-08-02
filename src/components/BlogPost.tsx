@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Calendar, Clock, User, Share2 } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import AnimatedSection from '@/components/common/AnimatedSection';
 
 interface BlogPostProps {
   postId: string;
@@ -9,10 +9,6 @@ interface BlogPostProps {
 }
 
 const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
-  const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
 
   // Mock data - in real app this would come from API/CMS
   const post = {
@@ -86,7 +82,7 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
           </div>
         </div>
 
-        <div ref={contentRef} className={`scroll-fade-up ${contentVisible ? 'visible' : ''}`}>
+        <AnimatedSection className="scroll-fade-up">
           {/* Article Header */}
           <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 leading-tight">
@@ -150,7 +146,7 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
               Umów bezpłatną konsultację
             </Button>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </div>
   );
