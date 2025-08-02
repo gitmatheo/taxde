@@ -66,7 +66,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
   - [x] 2.8 Extract ServiceCard component for service/blog card display with image, title, description, features
   - [x] 2.9 Replace card patterns in ServicesSection and BlogList with ServiceCard component
   - [x] 2.10 Extract FloatingElement component for floating UI elements with position and delay props
-  - [ ] 2.11 Replace floating cards in HeroSection with FloatingElement component
+  - [x] 2.11 Replace floating cards in HeroSection with FloatingElement component
   - [ ] 2.12 Test all extracted components work correctly in their original contexts
 
 - [ ] 3.0 Architecture & Organization
