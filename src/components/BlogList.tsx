@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
+import { useStaggeredAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/common/SectionHeader';
 
 interface BlogPost {
   id: string;
@@ -19,10 +20,7 @@ interface BlogListProps {
 }
 
 const BlogList = ({ onPostClick }: BlogListProps) => {
-  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+
 
   const { elementRef: postsRef, isVisible: postsVisible } = useStaggeredAnimation(6, {
     threshold: 0.1,
@@ -98,20 +96,14 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
     <div className="min-h-screen bg-background dark:bg-background pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}>
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
-            Blog TaxDe
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Najnowsze informacje z świata księgowości
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Praktyczne porady, analizy przepisów i trendy w księgowości cyfrowej
-          </p>
-        </div>
+        <SectionHeader
+          badge="Blog TaxDe"
+          title="Najnowsze informacje z świata księgowości"
+          description="Praktyczne porady, analizy przepisów i trendy w księgowości cyfrowej"
+        />
 
         {/* Categories Filter */}
-        <div className={`flex flex-wrap justify-center gap-2 mb-12 scroll-fade-up ${headerVisible ? 'visible' : ''}`}>
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map((category, index) => (
             <Badge 
               key={index}

@@ -6,17 +6,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import {
-  useStaggeredAnimation,
-  useScrollAnimation,
-} from "@/hooks/useScrollAnimation";
+import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
+import SectionHeader from '@/components/common/SectionHeader';
 
 const ServicesSection = () => {
-  const { elementRef: headerRef, isVisible: headerVisible } =
-    useScrollAnimation({
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    });
+
 
   const { elementRef } = useStaggeredAnimation(3, {
     threshold: 0.1,
@@ -67,24 +61,11 @@ const ServicesSection = () => {
   return (
     <section id="uslugi" className="py-24 bg-muted/30 dark:bg-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          ref={headerRef as React.RefObject<HTMLDivElement>}
-          className={`text-center mb-16 scroll-fade-up ${
-            headerVisible ? "visible" : ""
-          }`}
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
-            Nasze usługi
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Spółka w Niemczech bez stresu
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Załatwimy wszystkie formalności, poprowadzimy księgowość i zajmiemy
-            się kontaktem z urzędami. Ty skupiasz się na biznesie — my zajmujemy
-            się resztą.
-          </p>
-        </div>
+        <SectionHeader
+          badge="Nasze usługi"
+          title="Spółka w Niemczech bez stresu"
+          description="Załatwimy wszystkie formalności, poprowadzimy księgowość i zajmiemy się kontaktem z urzędami. Ty skupiasz się na biznesie — my zajmujemy się resztą."
+        />
 
         <div
           ref={elementRef as React.RefObject<HTMLDivElement>}

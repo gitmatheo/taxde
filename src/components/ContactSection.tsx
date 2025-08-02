@@ -5,14 +5,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
-import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
+import { useStaggeredAnimation } from '@/hooks/useScrollAnimation';
+import SectionHeader from '@/components/common/SectionHeader';
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation({
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+
 
   const { elementRef: contentRef, isVisible: contentVisible } = useStaggeredAnimation(2, {
     threshold: 0.1,
@@ -90,17 +88,11 @@ const ContactSection = () => {
     <section id="kontakt" className="py-24 bg-gradient-to-br from-background to-muted/30 dark:from-background dark:to-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={headerRef} className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}>
-          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
-            Kontakt
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Rozpocznij współpracę z nami
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Umów bezpłatną konsultację i dowiedz się, jak możemy pomóc Twojemu biznesowi
-          </p>
-        </div>
+        <SectionHeader
+          badge="Kontakt"
+          title="Rozpocznij współpracę z nami"
+          description="Umów bezpłatną konsultację i dowiedz się, jak możemy pomóc Twojemu biznesowi"
+        />
 
         <div ref={contentRef} className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
