@@ -71,7 +71,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 
 - [ ] 3.0 Architecture & Organization
 
-  - [ ] 3.1 Create src/config/constants.ts file with animation configuration and contact information
+  - [x] 3.1 Create src/config/constants.ts file with animation configuration and contact information
   - [ ] 3.2 Create src/types/index.ts file with BlogPost, Service, ContactInfo, and AnimationConfig interfaces
   - [ ] 3.3 Extract useIntersectionObserver hook to replace repetitive scroll animation setup
   - [ ] 3.4 Extract useFormState hook from ContactSection for form state management
