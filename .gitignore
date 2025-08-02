@@ -26,3 +26,6 @@ dist-ssr
 
 # YoYo AI version control directory
 .yoyo/
+
+.cursor/
+docs/
