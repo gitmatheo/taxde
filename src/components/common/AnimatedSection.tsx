@@ -66,12 +66,19 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   render,
 }) => {
   // Always call both hooks to maintain hook order consistency
-  const staggerResult = useStaggeredAnimation(staggerCount || 1, animationOptions);
+  const staggerResult = useStaggeredAnimation(
+    staggerCount || 1,
+    animationOptions
+  );
   const scrollResult = useScrollAnimation(animationOptions);
 
   // Use staggered animation if staggerCount is provided, otherwise use scroll animation
-  const elementRef = staggerCount ? staggerResult.elementRef : scrollResult.elementRef;
-  const isVisible = staggerCount ? staggerResult.isVisible : scrollResult.isVisible;
+  const elementRef = staggerCount
+    ? staggerResult.elementRef
+    : scrollResult.elementRef;
+  const isVisible = staggerCount
+    ? staggerResult.isVisible
+    : scrollResult.isVisible;
 
   // If render prop is provided, use it
   if (render) {
