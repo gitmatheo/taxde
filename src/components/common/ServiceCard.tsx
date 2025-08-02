@@ -106,7 +106,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           alt={title}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-
       </div>
 
       {/* Card Header */}

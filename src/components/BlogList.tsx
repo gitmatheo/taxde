@@ -1,4 +1,3 @@
-
 import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import ServiceCard from "@/components/common/ServiceCard";
@@ -7,7 +6,6 @@ interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
-  category: string;
   date: string;
   readTime: string;
   image: string;
@@ -94,8 +92,6 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
     },
   ];
 
-
-
   return (
     <div className="min-h-screen bg-background dark:bg-background pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,8 +101,6 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
           title="Najnowsze informacje z świata księgowości"
           description="Praktyczne porady, analizy przepisów i trendy w księgowości cyfrowej"
         />
-
-
 
         {/* Blog Posts Grid */}
         <AnimatedSection
@@ -119,7 +113,6 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
               image={post.image}
               title={post.title}
               excerpt={post.excerpt}
-
               date={post.date}
               readTime={post.readTime}
               author={post.author}

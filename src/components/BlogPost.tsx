@@ -45,7 +45,7 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
       <h2>Podsumowanie</h2>
       <p>Zmiany w przepisach podatkowych na 2024 rok są znaczące, ale przy odpowiednim przygotowaniu można je wdrożyć bez większych problemów. Kluczowe jest wczesne rozpoczęcie przygotowań i skorzystanie z pomocy profesjonalistów.</p>
     `,
-    
+
     date: "15 grudnia 2024",
     readTime: "5 min",
     image: "https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg",
@@ -75,7 +75,6 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
             className="w-full h-64 sm:h-80 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          
         </div>
 
         <AnimatedSection className="scroll-fade-up">
