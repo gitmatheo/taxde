@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
-import FloatingElement from "@/components/common/FloatingElement";
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,33 +11,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-0">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-chart-2/5 dark:from-primary/10 dark:via-background dark:to-chart-2/10">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%236366f1%22%20fill-opacity=%220.05%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] dark:bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20viewBox=%220%200%2060%2060%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill=%22none%22%20fill-rule=%22evenodd%22%3E%3Cg%20fill=%22%236366f1%22%20fill-opacity=%220.1%22%3E%3Ccircle%20cx=%2230%22%20cy=%2230%22%20r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-
-        {/* Floating Background Blobs */}
-        <FloatingElement
-          type="blob"
-          position={{ top: "20", left: "10" }}
-          blobColor="primary"
-          size="lg"
-        />
-        <FloatingElement
-          type="blob"
-          position={{ top: "40", right: "10" }}
-          blobColor="chart-2"
-          size="lg"
-          animationDelay="2000"
-        />
-        <FloatingElement
-          type="blob"
-          position={{ bottom: "8", left: "20" }}
-          blobColor="chart-3"
-          size="lg"
-          animationDelay="4000"
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -94,21 +66,16 @@ const HeroSection = () => {
               />
 
               {/* Floating Metric Cards */}
-              <FloatingElement
-                type="card"
-                position={{ top: "-4", left: "-4" }}
-                value="99.9%"
-                label="Precyzja"
-                valueColor="primary"
-              />
-              <FloatingElement
-                type="card"
-                position={{ bottom: "-4", right: "-4" }}
-                value="48h"
-                label="Czas reakcji"
-                valueColor="chart-2"
-                animationDelay="1000"
-              />
+              <div className="absolute -top-4 -left-4 bg-card text-card-foreground p-4 rounded-xl shadow-lg animate-float">
+                <div className="text-2xl font-bold text-primary">99.9%</div>
+                <div className="text-sm text-muted-foreground">Precyzja</div>
+              </div>
+              <div className="absolute -bottom-4 -right-4 bg-card text-card-foreground p-4 rounded-xl shadow-lg animate-float animation-delay-1000">
+                <div className="text-2xl font-bold text-primary">48h</div>
+                <div className="text-sm text-muted-foreground">
+                  Czas reakcji
+                </div>
+              </div>
             </div>
           </div>
         </div>
