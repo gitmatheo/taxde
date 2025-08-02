@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
@@ -45,7 +45,7 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
       <h2>Podsumowanie</h2>
       <p>Zmiany w przepisach podatkowych na 2024 rok są znaczące, ale przy odpowiednim przygotowaniu można je wdrożyć bez większych problemów. Kluczowe jest wczesne rozpoczęcie przygotowań i skorzystanie z pomocy profesjonalistów.</p>
     `,
-    category: "Prawo podatkowe",
+    
     date: "15 grudnia 2024",
     readTime: "5 min",
     image: "https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg",
@@ -75,14 +75,7 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
             className="w-full h-64 sm:h-80 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          <div className="absolute bottom-6 left-6">
-            <Badge
-              variant="secondary"
-              className="bg-background/90 dark:bg-background/90 text-foreground mb-4"
-            >
-              {post.category}
-            </Badge>
-          </div>
+          
         </div>
 
         <AnimatedSection className="scroll-fade-up">

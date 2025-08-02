@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export interface ServiceCardProps {
@@ -28,8 +28,7 @@ export interface ServiceCardProps {
   // Blog-specific props
   /** Brief excerpt for blog cards */
   excerpt?: string;
-  /** Category badge for blog cards */
-  category?: string;
+
   /** Publication date for blog cards */
   date?: string;
   /** Reading time for blog cards */
@@ -65,7 +64,7 @@ export interface ServiceCardProps {
  *   image="/blog.jpg"
  *   title="Blog Title"
  *   excerpt="Blog excerpt..."
- *   category="Technology"
+
  *   date="Dec 15, 2024"
  *   readTime="5 min"
  *   author="John Doe"
@@ -82,7 +81,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   onClick,
   features,
   excerpt,
-  category,
+
   date,
   readTime,
   author,
@@ -90,7 +89,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   showArrow = false,
 }) => {
   const isClickable = !!onClick;
-  const isBlogCard = !!(excerpt || category || date || readTime || author);
+  const isBlogCard = !!(excerpt || date || readTime || author);
   const isServiceCard = !!features;
 
   return (
@@ -100,23 +99,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       } ${className}`}
       onClick={onClick}
     >
-      {/* Image with optional category badge */}
+      {/* Image */}
       <div className="relative">
         <img
           src={image}
           alt={title}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
-        {category && (
-          <div className="absolute top-4 left-4">
-            <Badge
-              variant="secondary"
-              className="bg-background/90 text-foreground"
-            >
-              {category}
-            </Badge>
-          </div>
-        )}
+
       </div>
 
       {/* Card Header */}
