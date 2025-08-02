@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
+import ContactCard from "@/components/common/ContactCard";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -218,41 +219,15 @@ const ContactSection = () => {
 
           {/* Contact Information */}
           <div className="stagger-item">
-            <div className="mb-8 scroll-fade-right">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Skontaktuj się z nami
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Jesteśmy dostępni dla Ciebie. Wybierz najwygodniejszy sposób
-                kontaktu.
-              </p>
-            </div>
-
-            <AnimatedSection staggerCount={4} className="space-y-4 mb-8">
+            <AnimatedSection staggerCount={5} className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
-                <Card
+                <ContactCard
                   key={index}
-                  className="stagger-item hover-lift border transition-all duration-300"
-                >
-                  <CardContent className="p-6">
-                    <a
-                      href={info.link}
-                      className="flex items-center space-x-4 group"
-                    >
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-foreground">
-                          {info.title}
-                        </h4>
-                        <p className="text-muted-foreground group-hover:text-primary transition-colors">
-                          {info.value}
-                        </p>
-                      </div>
-                    </a>
-                  </CardContent>
-                </Card>
+                  icon={info.icon}
+                  title={info.title}
+                  value={info.value}
+                  link={info.link}
+                />
               ))}
             </AnimatedSection>
           </div>

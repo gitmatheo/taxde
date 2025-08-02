@@ -62,7 +62,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
   - [x] 2.4 Extract AnimatedSection component that wraps content with scroll animations
   - [x] 2.5 Replace scroll animation patterns in ContactSection, ServicesSection, BlogList, BlogPost with AnimatedSection
   - [x] 2.6 Extract ContactCard component for contact information display
-  - [ ] 2.7 Replace 4 contact info instances in ContactSection with ContactCard component
+  - [x] 2.7 Replace 5 contact info instances in ContactSection with ContactCard component
   - [ ] 2.8 Extract ServiceCard component for service/blog card display with image, title, description, features
   - [ ] 2.9 Replace card patterns in ServicesSection and BlogList with ServiceCard component
   - [ ] 2.10 Extract FloatingElement component for floating UI elements with position and delay props
