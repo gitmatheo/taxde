@@ -1,0 +1,256 @@
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
+import { useScrollAnimation, useStaggeredAnimation } from '@/hooks/useScrollAnimation';
+
+const ContactSection = () => {
+  const { toast } = useToast();
+  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  const { elementRef: contentRef, isVisible: contentVisible } = useStaggeredAnimation(2, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  const { elementRef: contactInfoRef, isVisible: contactInfoVisible } = useStaggeredAnimation(4, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      toast({
+        title: "Wiadomość wysłana!",
+        description: "Skontaktujemy się z Tobą w ciągu 24 godzin.",
+      });
+      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      setIsSubmitting(false);
+    }, 1000);
+  };
+
+  const contactInfo = [
+    {
+      icon: <Phone className="h-6 w-6" />,
+      title: "Telefon",
+      value: "+48 123 456 789",
+      link: "tel:+48123456789"
+    },
+    {
+      icon: <Mail className="h-6 w-6" />,
+      title: "Email",
+      value: "kontakt@taxde.pl",
+      link: "mailto:kontakt@taxde.pl"
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Biuro",
+      value: "Wilmersdorfer Str. 122-123, 10627 Berlin",
+      link: "https://maps.google.com"
+    },
+    {
+      icon: <MapPin className="h-6 w-6" />,
+      title: "Siedziba",
+      value: "Ostendstraße 25, 12459 Berlin",
+      link: "https://maps.google.com"
+    },
+    {
+      icon: <MessageCircle className="h-6 w-6" />,
+      title: "Napisz na WhatsApp",
+      value: "+48 123 456 789",
+      link: "https://wa.me/48123456789"
+    }
+  ];
+
+  return (
+    <section id="kontakt" className="py-24 bg-gradient-to-br from-background to-muted/30 dark:from-background dark:to-muted/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div ref={headerRef} className={`text-center mb-16 scroll-fade-up ${headerVisible ? 'visible' : ''}`}>
+          <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
+            Kontakt
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            Rozpocznij współpracę z nami
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Umów bezpłatną konsultację i dowiedz się, jak możemy pomóc Twojemu biznesowi
+          </p>
+        </div>
+
+        <div ref={contentRef} className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact Form */}
+          <Card className="stagger-item hover-lift border-0 shadow-xl transition-all duration-300">
+            <CardHeader>
+              <CardTitle className="text-2xl text-foreground">Umów bezpłatną konsultację</CardTitle>
+              <p className="text-muted-foreground">
+                Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin
+              </p>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                      Imię i nazwisko *
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full"
+                      placeholder="Jan Kowalski"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                      Email *
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full"
+                      placeholder="jan@firma.pl"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                      Telefon
+                    </label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full"
+                      placeholder="+48 123 456 789"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                      Nazwa firmy
+                    </label>
+                    <Input
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full"
+                      placeholder="Moja Firma Sp. z o.o."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    Wiadomość
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={5}
+                    className="w-full"
+                    placeholder="Opisz swoje potrzeby lub zadaj pytanie..."
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 py-6 text-lg button-hover-scale"
+                >
+                  {isSubmitting ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Wysyłanie...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="h-5 w-5" />
+                      <span>Wyślij zapytanie</span>
+                    </div>
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Contact Information */}
+          <div className="stagger-item">
+            <div className={`mb-8 scroll-fade-right ${contentVisible ? 'visible' : ''}`}>
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Skontaktuj się z nami
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Jesteśmy dostępni dla Ciebie. Wybierz najwygodniejszy sposób kontaktu.
+              </p>
+            </div>
+
+            <div ref={contactInfoRef} className="space-y-4 mb-8">
+              {contactInfo.map((info, index) => (
+                <Card 
+                  key={index} 
+                  className="stagger-item hover-lift border transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <a 
+                      href={info.link}
+                      className="flex items-center space-x-4 group"
+                    >
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-foreground">{info.title}</h4>
+                        <p className="text-muted-foreground group-hover:text-primary transition-colors">
+                          {info.value}
+                        </p>
+                      </div>
+                    </a>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
