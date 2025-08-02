@@ -1,7 +1,13 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export interface ServiceCardProps {
   /** Image source URL */
@@ -14,11 +20,11 @@ export interface ServiceCardProps {
   className?: string;
   /** Click handler for navigation (blog cards) */
   onClick?: () => void;
-  
+
   // Service-specific props
   /** List of features for service cards */
   features?: string[];
-  
+
   // Blog-specific props
   /** Brief excerpt for blog cards */
   excerpt?: string;
@@ -30,10 +36,10 @@ export interface ServiceCardProps {
   readTime?: string;
   /** Author name for blog cards */
   author?: string;
-  
+
   // Layout customization
   /** Title alignment - center for services, left for blogs */
-  titleAlignment?: 'left' | 'center';
+  titleAlignment?: "left" | "center";
   /** Show arrow icon in footer */
   showArrow?: boolean;
 }
@@ -41,7 +47,7 @@ export interface ServiceCardProps {
 /**
  * Flexible card component for displaying both service and blog content.
  * Adapts layout and content based on provided props.
- * 
+ *
  * @example Service Card
  * ```tsx
  * <ServiceCard
@@ -52,7 +58,7 @@ export interface ServiceCardProps {
  *   titleAlignment="center"
  * />
  * ```
- * 
+ *
  * @example Blog Card
  * ```tsx
  * <ServiceCard
@@ -72,7 +78,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   image,
   title,
   description,
-  className = '',
+  className = "",
   onClick,
   features,
   excerpt,
@@ -80,17 +86,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   date,
   readTime,
   author,
-  titleAlignment = 'center',
+  titleAlignment = "center",
   showArrow = false,
 }) => {
   const isClickable = !!onClick;
   const isBlogCard = !!(excerpt || category || date || readTime || author);
   const isServiceCard = !!features;
-  
+
   return (
     <Card
       className={`stagger-item hover-lift group transition-all duration-300 border-0 bg-card/80 backdrop-blur-sm overflow-hidden ${
-        isClickable ? 'cursor-pointer' : ''
+        isClickable ? "cursor-pointer" : ""
       } ${className}`}
       onClick={onClick}
     >
@@ -114,13 +120,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
 
       {/* Card Header */}
-      <CardHeader className={`${isBlogCard ? 'pb-3' : 'text-center pb-4'}`}>
-        <CardTitle 
+      <CardHeader className={`${isBlogCard ? "pb-3" : "text-center pb-4"}`}>
+        <CardTitle
           className={`${
-            isBlogCard 
-              ? 'text-lg leading-tight group-hover:text-primary transition-colors' 
-              : 'text-xl mb-2 text-foreground'
-          } ${titleAlignment === 'left' ? 'text-left' : 'text-center'}`}
+            isBlogCard
+              ? "text-lg leading-tight group-hover:text-primary transition-colors"
+              : "text-xl mb-2 text-foreground"
+          } ${titleAlignment === "left" ? "text-left" : "text-center"}`}
         >
           {title}
         </CardTitle>

@@ -1,13 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
 import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
+import ServiceCard from "@/components/common/ServiceCard";
 
 const ServicesSection = () => {
   const services = [
@@ -65,39 +58,14 @@ const ServicesSection = () => {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((service, index) => (
-            <Card
+            <ServiceCard
               key={index}
-              className="stagger-item hover-lift group transition-all duration-300 border-0 bg-card/80 backdrop-blur-sm overflow-hidden"
-            >
-              <div className="relative">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader className="text-center pb-4">
-                <CardTitle className="text-xl mb-2 text-foreground">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center text-sm text-muted-foreground"
-                    >
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+              image={service.image}
+              title={service.title}
+              description={service.description}
+              features={service.features}
+              titleAlignment="center"
+            />
           ))}
         </AnimatedSection>
       </div>

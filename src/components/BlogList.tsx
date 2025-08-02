@@ -1,8 +1,7 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
+import ServiceCard from "@/components/common/ServiceCard";
 
 interface BlogPost {
   id: string;
@@ -133,60 +132,20 @@ const BlogList = ({ onPostClick }: BlogListProps) => {
           staggerCount={6}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {blogPosts.map((post, index) => (
-            <Card
+          {blogPosts.map((post) => (
+            <ServiceCard
               key={post.id}
-              className="stagger-item hover-lift group cursor-pointer transition-all duration-300 border-0 bg-card/80 backdrop-blur-sm overflow-hidden"
+              image={post.image}
+              title={post.title}
+              excerpt={post.excerpt}
+              category={post.category}
+              date={post.date}
+              readTime={post.readTime}
+              author={post.author}
               onClick={() => onPostClick(post.id)}
-            >
-              <div className="relative">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute top-4 left-4">
-                  <Badge
-                    variant="secondary"
-                    className="bg-background/90 text-foreground"
-                  >
-                    {post.category}
-                  </Badge>
-                </div>
-              </div>
-
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
-                  {post.title}
-                </CardTitle>
-              </CardHeader>
-
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-3 w-3" />
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-foreground">
-                    {post.author}
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
-                </div>
-              </CardContent>
-            </Card>
+              titleAlignment="left"
+              showArrow={true}
+            />
           ))}
         </AnimatedSection>
       </div>
