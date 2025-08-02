@@ -56,7 +56,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 
 - [ ] 2.0 Component Extraction & Reusability
 
-  - [ ] 2.1 Create src/components/common/ directory for reusable components
+  - [x] 2.1 Create src/components/common/ directory for reusable components
   - [ ] 2.2 Extract SectionHeader component with props for badge, title, and description
   - [ ] 2.3 Replace section headers in ContactSection, ServicesSection, BlogList with SectionHeader component
   - [ ] 2.4 Extract AnimatedSection component that wraps content with scroll animations
