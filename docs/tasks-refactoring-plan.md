@@ -31,6 +31,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 - `src/hooks/useNavigation.ts` - New navigation logic hook
 - `src/hooks/useAnimation.ts` - New unified animation hook
 - `docs/color-migration-guide.md` - Comprehensive color mapping guide for OKLCH theme migration
+- `docs/color-testing-checklist.md` - Comprehensive testing guide for light/dark theme consistency
 
 ### Notes
 
