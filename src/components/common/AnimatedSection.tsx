@@ -2,8 +2,13 @@ import React from "react";
 import {
   useScrollAnimation,
   useStaggeredAnimation,
-  type AnimationOptions,
 } from "@/hooks/useScrollAnimation";
+
+// Animation options interface (moved here since it's not exported from useScrollAnimation)
+interface AnimationOptions {
+  threshold?: number;
+  rootMargin?: string;
+}
 
 export interface AnimatedSectionProps {
   /** Number of items to stagger (if provided, uses staggered animation) */
@@ -60,17 +65,13 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   children,
   render,
 }) => {
-  // Use staggered animation if staggerCount is provided, otherwise single scroll animation
-  const staggerResult = staggerCount
-    ? useStaggeredAnimation(staggerCount, animationOptions)
-    : null;
-  const scrollResult = !staggerCount
-    ? useScrollAnimation(animationOptions)
-    : null;
+  // Always call both hooks to maintain hook order consistency
+  const staggerResult = useStaggeredAnimation(staggerCount || 1, animationOptions);
+  const scrollResult = useScrollAnimation(animationOptions);
 
-  const elementRef = staggerResult?.elementRef || scrollResult?.elementRef;
-  const isVisible =
-    staggerResult?.isVisible || scrollResult?.isVisible || false;
+  // Use staggered animation if staggerCount is provided, otherwise use scroll animation
+  const elementRef = staggerCount ? staggerResult.elementRef : scrollResult.elementRef;
+  const isVisible = staggerCount ? staggerResult.isVisible : scrollResult.isVisible;
 
   // If render prop is provided, use it
   if (render) {

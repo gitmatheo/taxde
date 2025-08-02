@@ -50,7 +50,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     .join(" ");
 
   return (
-    <div ref={animated ? elementRef : undefined} className={containerClasses}>
+    <div ref={animated ? (elementRef as React.RefObject<HTMLDivElement>) : undefined} className={containerClasses}>
       {/* Badge */}
       <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
         {badge}
