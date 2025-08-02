@@ -6,7 +6,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 
 - `src/components/Footer.tsx` - Migrated all hardcoded gray colors to OKLCH theme colors
 - `src/components/HeroSection.tsx` - Updated floating cards to use theme colors (bg-card, text-card-foreground)
-- `src/components/ui/toast.tsx` - Contains hardcoded red-\* colors for destructive states
+- `src/components/ui/toast.tsx` - Migrated all hardcoded red-\* colors to theme destructive colors
 - `src/components/ContactSection.tsx` - Large 256-line component that needs to be split and refactored
 - `src/components/ServicesSection.tsx` - Contains repeated card patterns to be extracted
 - `src/components/BlogList.tsx` - Has repeated patterns and animation logic
@@ -40,7 +40,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
   - [x] 1.1 Create color migration guide document with mapping rules (bg-gray-900 → bg-card, text-gray-400 → text-muted-foreground, etc.)
   - [x] 1.2 Replace all hardcoded gray colors in Footer.tsx (18+ instances) with appropriate theme colors
   - [x] 1.3 Update floating card colors in HeroSection.tsx to use bg-card and text-card-foreground instead of bg-white/bg-gray-800
-  - [ ] 1.4 Replace hardcoded red-\* colors in ui/toast.tsx with theme destructive colors
+  - [x] 1.4 Replace hardcoded red-\* colors in ui/toast.tsx with theme destructive colors
   - [ ] 1.5 Audit all remaining components for hardcoded colors and replace with theme equivalents
   - [ ] 1.6 Test color consistency across light and dark themes
   - [ ] 1.7 Verify all colors work properly with OKLCH color space
