@@ -11,8 +11,6 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 const ContactSection = () => {
   const { toast } = useToast();
 
-
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -220,7 +218,7 @@ const ContactSection = () => {
 
           {/* Contact Information */}
           <div className="stagger-item">
-                         <div className="mb-8 scroll-fade-right">
+            <div className="mb-8 scroll-fade-right">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Skontaktuj się z nami
               </h3>
@@ -230,7 +228,7 @@ const ContactSection = () => {
               </p>
             </div>
 
-                         <AnimatedSection staggerCount={4} className="space-y-4 mb-8">
+            <AnimatedSection staggerCount={4} className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
                 <Card
                   key={index}
@@ -255,8 +253,8 @@ const ContactSection = () => {
                     </a>
                   </CardContent>
                 </Card>
-                             ))}
-             </AnimatedSection>
+              ))}
+            </AnimatedSection>
           </div>
         </AnimatedSection>
       </div>

@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calendar, Clock, User, Share2 } from 'lucide-react';
-import AnimatedSection from '@/components/common/AnimatedSection';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, Calendar, Clock, User, Share2 } from "lucide-react";
+import AnimatedSection from "@/components/common/AnimatedSection";
 
 interface BlogPostProps {
   postId: string;
@@ -9,11 +9,10 @@ interface BlogPostProps {
 }
 
 const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
-
   // Mock data - in real app this would come from API/CMS
   const post = {
     id: postId,
-    title: 'Nowe przepisy podatkowe 2024 - co musisz wiedzieć',
+    title: "Nowe przepisy podatkowe 2024 - co musisz wiedzieć",
     content: `
       <p>Rok 2024 przynosi szereg istotnych zmian w polskim prawie podatkowym, które bezpośrednio wpłyną na prowadzenie działalności gospodarczej. W tym artykule omówimy najważniejsze zmiany i ich praktyczne konsekwencje dla przedsiębiorców.</p>
 
@@ -46,20 +45,21 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
       <h2>Podsumowanie</h2>
       <p>Zmiany w przepisach podatkowych na 2024 rok są znaczące, ale przy odpowiednim przygotowaniu można je wdrożyć bez większych problemów. Kluczowe jest wczesne rozpoczęcie przygotowań i skorzystanie z pomocy profesjonalistów.</p>
     `,
-    category: 'Prawo podatkowe',
-    date: '15 grudnia 2024',
-    readTime: '5 min',
-    image: 'https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg',
-    author: 'Anna Kowalska',
-    authorImage: 'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg'
+    category: "Prawo podatkowe",
+    date: "15 grudnia 2024",
+    readTime: "5 min",
+    image: "https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg",
+    author: "Anna Kowalska",
+    authorImage:
+      "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg",
   };
 
   return (
     <div className="min-h-screen bg-background dark:bg-background pt-24 pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Back Button */}
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           onClick={onBackClick}
           className="mb-8 hover:bg-muted dark:hover:bg-muted"
         >
@@ -69,14 +69,17 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
 
         {/* Hero Image */}
         <div className="relative mb-8 rounded-2xl overflow-hidden">
-          <img 
+          <img
             src={post.image}
             alt={post.title}
             className="w-full h-64 sm:h-80 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
           <div className="absolute bottom-6 left-6">
-            <Badge variant="secondary" className="bg-background/90 dark:bg-background/90 text-foreground mb-4">
+            <Badge
+              variant="secondary"
+              className="bg-background/90 dark:bg-background/90 text-foreground mb-4"
+            >
               {post.category}
             </Badge>
           </div>
@@ -88,20 +91,24 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
             <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 leading-tight">
               {post.title}
             </h1>
-            
+
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <div className="flex items-center space-x-4">
-                <img 
+                <img
                   src={post.authorImage}
                   alt={post.author}
                   className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-medium text-foreground">{post.author}</div>
-                  <div className="text-sm text-muted-foreground">Główna Księgowa</div>
+                  <div className="font-medium text-foreground">
+                    {post.author}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Główna Księgowa
+                  </div>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                 <div className="flex items-center space-x-1">
                   <Calendar className="h-4 w-4" />
@@ -120,18 +127,20 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
           </div>
 
           {/* Article Content */}
-          <div 
+          <div
             className="prose prose-lg max-w-none text-muted-foreground"
             dangerouslySetInnerHTML={{ __html: post.content }}
-            style={{
-              '--tw-prose-body': 'hsl(var(--muted-foreground))',
-              '--tw-prose-headings': 'hsl(var(--foreground))',
-              '--tw-prose-links': 'hsl(var(--primary))',
-              '--tw-prose-bold': 'hsl(var(--foreground))',
-              '--tw-prose-quotes': 'hsl(var(--foreground))',
-              '--tw-prose-quote-borders': 'hsl(var(--primary))',
-              '--tw-prose-code': 'hsl(var(--foreground))',
-            } as React.CSSProperties}
+            style={
+              {
+                "--tw-prose-body": "hsl(var(--muted-foreground))",
+                "--tw-prose-headings": "hsl(var(--foreground))",
+                "--tw-prose-links": "hsl(var(--primary))",
+                "--tw-prose-bold": "hsl(var(--foreground))",
+                "--tw-prose-quotes": "hsl(var(--foreground))",
+                "--tw-prose-quote-borders": "hsl(var(--primary))",
+                "--tw-prose-code": "hsl(var(--foreground))",
+              } as React.CSSProperties
+            }
           />
 
           {/* Call to Action */}
@@ -140,7 +149,8 @@ const BlogPost = ({ postId, onBackClick }: BlogPostProps) => {
               Potrzebujesz pomocy z nowymi przepisami?
             </h3>
             <p className="text-muted-foreground mb-6">
-              Nasz zespół ekspertów pomoże Ci przygotować się do zmian i wdrożyć nowe rozwiązania w Twojej firmie.
+              Nasz zespół ekspertów pomoże Ci przygotować się do zmian i wdrożyć
+              nowe rozwiązania w Twojej firmie.
             </p>
             <Button className="bg-gradient-to-r from-primary to-primary/80">
               Umów bezpłatną konsultację

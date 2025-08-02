@@ -20,7 +20,6 @@ interface BlogListProps {
 }
 
 const BlogList = ({ onPostClick }: BlogListProps) => {
-
   const blogPosts: BlogPost[] = [
     {
       id: "1",

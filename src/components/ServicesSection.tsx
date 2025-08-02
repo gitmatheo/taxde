@@ -10,7 +10,6 @@ import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const ServicesSection = () => {
-
   const services = [
     {
       image:
