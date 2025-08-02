@@ -76,12 +76,12 @@ const HeroSection = () => {
               />
 
               {/* Floating Cards */}
-              <div className="absolute -top-4 -left-4 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg animate-float">
+              <div className="absolute -top-4 -left-4 bg-card text-card-foreground p-4 rounded-xl shadow-lg animate-float">
                 <div className="text-2xl font-bold text-primary">99.9%</div>
                 <div className="text-sm text-muted-foreground">Precyzja</div>
               </div>
 
-              <div className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg animate-float animation-delay-1000">
+              <div className="absolute -bottom-4 -right-4 bg-card text-card-foreground p-4 rounded-xl shadow-lg animate-float animation-delay-1000">
                 <div className="text-2xl font-bold text-chart-2">48h</div>
                 <div className="text-sm text-muted-foreground">
                   Czas reakcji
