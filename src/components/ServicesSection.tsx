@@ -7,11 +7,9 @@ import {
 } from "@/components/ui/card";
 
 import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
-import SectionHeader from '@/components/common/SectionHeader';
+import SectionHeader from "@/components/common/SectionHeader";
 
 const ServicesSection = () => {
-
-
   const { elementRef } = useStaggeredAnimation(3, {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",

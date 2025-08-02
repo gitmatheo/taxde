@@ -1,5 +1,5 @@
-import React from 'react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import React from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export interface SectionHeaderProps {
   /** Badge text displayed above the title */
@@ -19,7 +19,7 @@ export interface SectionHeaderProps {
 /**
  * Reusable section header component with badge, title, and optional description.
  * Includes built-in scroll animations and consistent OKLCH theme styling.
- * 
+ *
  * @example
  * ```tsx
  * <SectionHeader
@@ -33,25 +33,24 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   badge,
   title,
   description,
-  className = '',
+  className = "",
   centered = true,
   animated = true,
 }) => {
   const { elementRef, isVisible } = useScrollAnimation();
 
   const containerClasses = [
-    centered ? 'text-center' : 'text-left',
-    'mb-16',
-    animated ? 'scroll-fade-up' : '',
-    animated && isVisible ? 'visible' : '',
+    centered ? "text-center" : "text-left",
+    "mb-16",
+    animated ? "scroll-fade-up" : "",
+    animated && isVisible ? "visible" : "",
     className,
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div
-      ref={animated ? elementRef : undefined}
-      className={containerClasses}
-    >
+    <div ref={animated ? elementRef : undefined} className={containerClasses}>
       {/* Badge */}
       <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
         {badge}
@@ -64,7 +63,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 
       {/* Optional Description */}
       {description && (
-        <p className={`text-xl text-muted-foreground ${centered ? 'max-w-3xl mx-auto' : 'max-w-3xl'}`}>
+        <p
+          className={`text-xl text-muted-foreground ${
+            centered ? "max-w-3xl mx-auto" : "max-w-3xl"
+          }`}
+        >
           {description}
         </p>
       )}

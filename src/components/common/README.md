@@ -17,21 +17,25 @@ src/components/common/
 ## 🎯 Component Design Principles
 
 ### ✅ **Consistency**
+
 - All components use the OKLCH theme system
 - Consistent prop interfaces and naming conventions
 - Standardized animation patterns
 
 ### ✅ **Reusability**
+
 - Components accept props for customization
 - No hardcoded content or styling
 - Flexible enough for different use cases
 
 ### ✅ **Performance**
+
 - Optimized for re-rendering with React.memo()
 - Efficient animation implementations
 - Minimal bundle size impact
 
 ### ✅ **Accessibility**
+
 - Proper ARIA labels and roles
 - Keyboard navigation support
 - Screen reader compatibility
@@ -39,6 +43,7 @@ src/components/common/
 ## 🔧 Component Usage Examples
 
 ### SectionHeader
+
 ```tsx
 <SectionHeader
   badge="Nasze usługi"
@@ -48,15 +53,15 @@ src/components/common/
 ```
 
 ### AnimatedSection
+
 ```tsx
 <AnimatedSection>
-  <div className="grid grid-cols-3 gap-6">
-    {/* Your content here */}
-  </div>
+  <div className="grid grid-cols-3 gap-6">{/* Your content here */}</div>
 </AnimatedSection>
 ```
 
 ### ServiceCard
+
 ```tsx
 <ServiceCard
   image="/path/to/image.jpg"
@@ -70,7 +75,7 @@ src/components/common/
 ## 📋 Implementation Status
 
 - [ ] `SectionHeader.tsx` - Extract from repeated section headers
-- [ ] `AnimatedSection.tsx` - Standardize scroll animation patterns  
+- [ ] `AnimatedSection.tsx` - Standardize scroll animation patterns
 - [ ] `ContactCard.tsx` - Reusable contact information display
 - [ ] `ServiceCard.tsx` - Unified card component for services/blog
 - [ ] `FloatingElement.tsx` - Floating UI elements with animations

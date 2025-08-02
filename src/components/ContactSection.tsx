@@ -1,52 +1,55 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from 'lucide-react';
-import { useStaggeredAnimation } from '@/hooks/useScrollAnimation';
-import SectionHeader from '@/components/common/SectionHeader';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from "lucide-react";
+import { useStaggeredAnimation } from "@/hooks/useScrollAnimation";
+import SectionHeader from "@/components/common/SectionHeader";
 
 const ContactSection = () => {
   const { toast } = useToast();
 
+  const { elementRef: contentRef, isVisible: contentVisible } =
+    useStaggeredAnimation(2, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    });
 
-  const { elementRef: contentRef, isVisible: contentVisible } = useStaggeredAnimation(2, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  const { elementRef: contactInfoRef, isVisible: contactInfoVisible } = useStaggeredAnimation(4, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  const { elementRef: contactInfoRef, isVisible: contactInfoVisible } =
+    useStaggeredAnimation(4, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    });
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Wiadomość wysłana!",
         description: "Skontaktujemy się z Tobą w ciągu 24 godzin.",
       });
-      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
       setIsSubmitting(false);
     }, 1000);
   };
@@ -56,36 +59,39 @@ const ContactSection = () => {
       icon: <Phone className="h-6 w-6" />,
       title: "Telefon",
       value: "+48 123 456 789",
-      link: "tel:+48123456789"
+      link: "tel:+48123456789",
     },
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
       value: "kontakt@taxde.pl",
-      link: "mailto:kontakt@taxde.pl"
+      link: "mailto:kontakt@taxde.pl",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Biuro",
       value: "Wilmersdorfer Str. 122-123, 10627 Berlin",
-      link: "https://maps.google.com"
+      link: "https://maps.google.com",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Siedziba",
       value: "Ostendstraße 25, 12459 Berlin",
-      link: "https://maps.google.com"
+      link: "https://maps.google.com",
     },
     {
       icon: <MessageCircle className="h-6 w-6" />,
       title: "Napisz na WhatsApp",
       value: "+48 123 456 789",
-      link: "https://wa.me/48123456789"
-    }
+      link: "https://wa.me/48123456789",
+    },
   ];
 
   return (
-    <section id="kontakt" className="py-24 bg-gradient-to-br from-background to-muted/30 dark:from-background dark:to-muted/10">
+    <section
+      id="kontakt"
+      className="py-24 bg-gradient-to-br from-background to-muted/30 dark:from-background dark:to-muted/10"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <SectionHeader
@@ -94,11 +100,16 @@ const ContactSection = () => {
           description="Umów bezpłatną konsultację i dowiedz się, jak możemy pomóc Twojemu biznesowi"
         />
 
-        <div ref={contentRef} className="grid lg:grid-cols-2 gap-12 items-start">
+        <div
+          ref={contentRef}
+          className="grid lg:grid-cols-2 gap-12 items-start"
+        >
           {/* Contact Form */}
           <Card className="stagger-item hover-lift border-0 shadow-xl transition-all duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl text-foreground">Umów bezpłatną konsultację</CardTitle>
+              <CardTitle className="text-2xl text-foreground">
+                Umów bezpłatną konsultację
+              </CardTitle>
               <p className="text-muted-foreground">
                 Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin
               </p>
@@ -107,7 +118,10 @@ const ContactSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Imię i nazwisko *
                     </label>
                     <Input
@@ -121,7 +135,10 @@ const ContactSection = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email *
                     </label>
                     <Input
@@ -139,7 +156,10 @@ const ContactSection = () => {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Telefon
                     </label>
                     <Input
@@ -152,7 +172,10 @@ const ContactSection = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Nazwa firmy
                     </label>
                     <Input
@@ -167,7 +190,10 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Wiadomość
                   </label>
                   <Textarea
@@ -204,23 +230,28 @@ const ContactSection = () => {
 
           {/* Contact Information */}
           <div className="stagger-item">
-            <div className={`mb-8 scroll-fade-right ${contentVisible ? 'visible' : ''}`}>
+            <div
+              className={`mb-8 scroll-fade-right ${
+                contentVisible ? "visible" : ""
+              }`}
+            >
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Skontaktuj się z nami
               </h3>
               <p className="text-muted-foreground mb-6">
-                Jesteśmy dostępni dla Ciebie. Wybierz najwygodniejszy sposób kontaktu.
+                Jesteśmy dostępni dla Ciebie. Wybierz najwygodniejszy sposób
+                kontaktu.
               </p>
             </div>
 
             <div ref={contactInfoRef} className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className="stagger-item hover-lift border transition-all duration-300"
                 >
                   <CardContent className="p-6">
-                    <a 
+                    <a
                       href={info.link}
                       className="flex items-center space-x-4 group"
                     >
@@ -228,7 +259,9 @@ const ContactSection = () => {
                         {info.icon}
                       </div>
                       <div>
-                        <h4 className="font-medium text-foreground">{info.title}</h4>
+                        <h4 className="font-medium text-foreground">
+                          {info.title}
+                        </h4>
                         <p className="text-muted-foreground group-hover:text-primary transition-colors">
                           {info.value}
                         </p>
