@@ -47,7 +47,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up animation-delay-400">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-primary to-chart-1 hover:from-primary/90 hover:to-chart-1/90 text-white px-8 py-6 text-lg group"
+                className="bg-gradient-to-r from-primary to-chart-1 hover:from-primary/90 hover:to-chart-1/90 text-primary-foreground px-8 py-6 text-lg group"
                 onClick={() => scrollToSection("kontakt")}
               >
                 Umów bezpłatną konsultację

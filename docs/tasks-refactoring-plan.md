@@ -7,6 +7,12 @@ Based on the Comprehensive Refactoring Plan for TaxDE
 - `src/components/Footer.tsx` - Migrated all hardcoded gray colors to OKLCH theme colors
 - `src/components/HeroSection.tsx` - Updated floating cards to use theme colors (bg-card, text-card-foreground)
 - `src/components/ui/toast.tsx` - Migrated all hardcoded red-\* colors to theme destructive colors
+- `src/components/ContactSection.tsx` - Migrated loading spinner border-white to border-primary-foreground
+- `src/components/HeroSection.tsx` - Migrated button text-white to text-primary-foreground
+- `src/components/ui/dialog.tsx` - Migrated overlay bg-black/80 to bg-foreground/80
+- `src/components/ui/drawer.tsx` - Migrated overlay bg-black/80 to bg-foreground/80
+- `src/components/ui/sheet.tsx` - Migrated overlay bg-black/80 to bg-foreground/80
+- `src/components/ui/alert-dialog.tsx` - Migrated overlay bg-black/80 to bg-foreground/80
 - `src/components/ContactSection.tsx` - Large 256-line component that needs to be split and refactored
 - `src/components/ServicesSection.tsx` - Contains repeated card patterns to be extracted
 - `src/components/BlogList.tsx` - Has repeated patterns and animation logic
@@ -41,7 +47,7 @@ Based on the Comprehensive Refactoring Plan for TaxDE
   - [x] 1.2 Replace all hardcoded gray colors in Footer.tsx (18+ instances) with appropriate theme colors
   - [x] 1.3 Update floating card colors in HeroSection.tsx to use bg-card and text-card-foreground instead of bg-white/bg-gray-800
   - [x] 1.4 Replace hardcoded red-\* colors in ui/toast.tsx with theme destructive colors
-  - [ ] 1.5 Audit all remaining components for hardcoded colors and replace with theme equivalents
+  - [x] 1.5 Audit all remaining components for hardcoded colors and replace with theme equivalents
   - [ ] 1.6 Test color consistency across light and dark themes
   - [ ] 1.7 Verify all colors work properly with OKLCH color space
 
