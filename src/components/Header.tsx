@@ -14,6 +14,15 @@ const Header = ({ navigateToPage }: HeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  // Get the base path from Vite's configuration
+  const basePath = import.meta.env.BASE_URL;
+
+  // Helper function to get relative path
+  const getRelativePath = () => {
+    const path = window.location.pathname;
+    return path.replace(basePath.replace(/\/$/, ""), "") || "/";
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -24,7 +33,8 @@ const Header = ({ navigateToPage }: HeaderProps) => {
 
   const scrollToSection = (sectionId: string) => {
     // If we're not on home page, navigate to home first
-    if (window.location.pathname !== "/") {
+    const relativePath = getRelativePath();
+    if (relativePath !== "/") {
       navigateToPage?.("home");
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
@@ -49,7 +59,8 @@ const Header = ({ navigateToPage }: HeaderProps) => {
 
   const handleLogoClick = () => {
     // Check if we're already on the home page
-    if (window.location.pathname === "/") {
+    const relativePath = getRelativePath();
+    if (relativePath === "/") {
       // If on home page, scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {

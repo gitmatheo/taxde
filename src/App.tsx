@@ -11,10 +11,15 @@ import Blog from "@/components/Blog";
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
+  // Get the base path from Vite's configuration
+  const basePath = import.meta.env.BASE_URL;
+
   useEffect(() => {
-    // Simple routing based on URL path
+    // Simple routing based on URL path, accounting for base path
     const path = window.location.pathname;
-    if (path === "/blog") {
+    const relativePath = path.replace(basePath.replace(/\/$/, ""), "") || "/";
+
+    if (relativePath === "/blog") {
       setCurrentPage("blog");
     } else {
       setCurrentPage("home");
@@ -23,7 +28,9 @@ function App() {
     // Handle browser back/forward buttons
     const handlePopState = () => {
       const path = window.location.pathname;
-      if (path === "/blog") {
+      const relativePath = path.replace(basePath.replace(/\/$/, ""), "") || "/";
+
+      if (relativePath === "/blog") {
         setCurrentPage("blog");
       } else {
         setCurrentPage("home");
@@ -32,15 +39,17 @@ function App() {
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+  }, [basePath]);
 
   // Function to navigate between pages
   const navigateToPage = (page: string) => {
     setCurrentPage(page);
+    const fullPath = basePath.replace(/\/$/, "");
+
     if (page === "blog") {
-      window.history.pushState({}, "", "/blog");
+      window.history.pushState({}, "", `${fullPath}/blog`);
     } else {
-      window.history.pushState({}, "", "/");
+      window.history.pushState({}, "", fullPath || "/");
     }
   };
 

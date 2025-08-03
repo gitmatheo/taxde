@@ -18,9 +18,19 @@ interface FooterProps {
 const Footer = ({ navigateToPage }: FooterProps) => {
   const { theme } = useTheme();
 
+  // Get the base path from Vite's configuration
+  const basePath = import.meta.env.BASE_URL;
+
+  // Helper function to get relative path
+  const getRelativePath = () => {
+    const path = window.location.pathname;
+    return path.replace(basePath.replace(/\/$/, ""), "") || "/";
+  };
+
   const scrollToSection = (sectionId: string) => {
     // If we're not on home page, navigate to home first
-    if (window.location.pathname !== "/") {
+    const relativePath = getRelativePath();
+    if (relativePath !== "/") {
       navigateToPage?.("home");
       // Wait for navigation to complete, then scroll
       setTimeout(() => {
