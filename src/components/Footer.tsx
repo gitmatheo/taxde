@@ -54,46 +54,20 @@ const Footer = ({ navigateToPage }: FooterProps) => {
   return (
     <footer className="bg-card text-card-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <img
                 src={theme === "dark" ? logoDark : logoLight}
                 alt="TaxDe Logo"
-                className="h-8 w-auto object-contain"
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Nowoczesne biuro księgowe oferujące kompleksowe usługi w modelu
               100% cyfrowym dla firm w całej Polsce.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           {/* Services */}
@@ -105,7 +79,7 @@ const Footer = ({ navigateToPage }: FooterProps) => {
                   onClick={() => scrollToSection("uslugi")}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Księgowość zgodna z § 6 Nr. 4 StBerG
+                  Księgowość
                 </button>
               </li>
               <li>
@@ -123,29 +97,6 @@ const Footer = ({ navigateToPage }: FooterProps) => {
                 >
                   Zakładanie spółek
                 </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold text-lg mb-6">Firma</h3>
-            <ul className="space-y-3">
-              <li>
-                <button
-                  onClick={handleBlogClick}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Blog
-                </button>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Kariera
-                </a>
               </li>
             </ul>
           </div>
