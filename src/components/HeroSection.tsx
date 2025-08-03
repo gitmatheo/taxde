@@ -12,11 +12,11 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 lg:pt-16">
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 container mx-auto px-8 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-6 animate-fade-in">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-lg mb-6 animate-fade-in">
               <span className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
               Twój partner w Niemczech
             </div>

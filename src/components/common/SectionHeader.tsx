@@ -57,7 +57,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       className={containerClasses}
     >
       {/* Badge */}
-      <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
+      <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary font-medium text-lg mb-4">
         {badge}
       </div>
 
