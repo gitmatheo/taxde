@@ -45,7 +45,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="uslugi" className="py-24 bg-muted/30 dark:bg-muted/10">
+    <section id="uslugi" className="py-4 bg-muted/30 dark:bg-muted/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge="Nasze usługi"
