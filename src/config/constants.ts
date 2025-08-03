@@ -124,7 +124,7 @@ export const FORM_CONFIG = {
   VALIDATION: {
     REQUIRED_FIELDS: ["name", "email", "message"],
     EMAIL_PATTERN: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    PHONE_PATTERN: /^\+?[\d\s\-\(\)]+$/,
+    PHONE_PATTERN: /^\+?[\d\s\-()]+$/,
   },
 
   SUBMISSION: {
@@ -203,4 +203,23 @@ export const LINKS = {
     TERMS_OF_SERVICE: "#",
     GDPR: "#",
   },
+} as const;
+
+/**
+ * EmailJS Configuration
+ * Used for sending contact form emails
+ *
+ * @note In production, these should be moved to environment variables:
+ * - VITE_EMAILJS_SERVICE_ID
+ * - VITE_EMAILJS_TEMPLATE_ID
+ * - VITE_EMAILJS_PUBLIC_KEY
+ */
+export const EMAIL_CONFIG = {
+  // Replace these with your actual EmailJS configuration
+  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || "your_service_id",
+  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "your_template_id",
+  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "your_public_key",
+
+  // Target email for contact form submissions
+  TARGET_EMAIL: import.meta.env.VITE_EMAILJS_TARGET_EMAIL || "test@email.com",
 } as const;

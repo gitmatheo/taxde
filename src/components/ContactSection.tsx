@@ -8,6 +8,8 @@ import { Mail, Phone, MapPin, MessageCircle, CheckCircle } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import ContactCard from "@/components/common/ContactCard";
+import emailjs from "@emailjs/browser";
+import { EMAIL_CONFIG } from "@/config/constants";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -32,15 +34,57 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Initialize EmailJS with public key
+      emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
+
+      // Prepare email template parameters
+      const templateParams = {
+        to_email: EMAIL_CONFIG.TARGET_EMAIL,
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        message: formData.message,
+        reply_to: formData.email,
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATE_ID,
+        templateParams
+      );
+
+      if (response.status === 200) {
+        toast({
+          title: "Wiadomość wysłana!",
+          description: "Skontaktujemy się z Tobą w ciągu 24 godzin.",
+        });
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Email send failed");
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+
       toast({
-        title: "Wiadomość wysłana!",
-        description: "Skontaktujemy się z Tobą w ciągu 24 godzin.",
+        title: "Błąd wysyłania",
+        description:
+          "Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie lub skontaktuj się bezpośrednio.",
+        variant: "destructive",
       });
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const contactInfo = [
