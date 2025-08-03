@@ -94,7 +94,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <Card
-      className={`stagger-item hover-lift group transition-all duration-300 border-0 bg-card/80 backdrop-blur-sm overflow-hidden ${
+      className={`stagger-item hover-lift group transition-all duration-300 border border-border/50 bg-card/80 backdrop-blur-sm overflow-hidden ${
         isClickable ? "cursor-pointer" : ""
       } ${className}`}
       onClick={onClick}
