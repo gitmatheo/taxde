@@ -1,12 +1,4 @@
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-} from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import logoLight from "@/assets/logo-taxde-lightmode.png";
 import logoDark from "@/assets/logo-taxde-darkmode.png";
@@ -45,10 +37,6 @@ const Footer = ({ navigateToPage }: FooterProps) => {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
-  };
-
-  const handleBlogClick = () => {
-    navigateToPage?.("blog");
   };
 
   return (
